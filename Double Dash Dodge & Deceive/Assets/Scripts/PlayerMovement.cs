@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 // Stores input for horizontal movement
     float xAxisMovement;
 
+    bool isFacingRight = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     // Updates the velocity of the player and maintains the vertical velocity
         rigidBody.velocity = new Vector2 (xAxisMovement * speed, rigidBody.velocity.y);
 
+        FlipAnimation();
+        
     // Updates the animator component with the player's velocity
         animator.SetFloat("xVelocity", Math.Abs(rigidBody.velocity.x));
     }
@@ -40,5 +44,22 @@ public class PlayerMovement : MonoBehaviour
     {
     // Vector2 describes the X and Y position of a game object
         xAxisMovement = context.ReadValue<Vector2>().x;
+    }
+
+    void FlipAnimation()
+    {
+    // If the character is moving right, flip them to the right, and vice versa
+        if (isFacingRight && xAxisMovement > 0f || !isFacingRight && xAxisMovement < 0f)
+        {
+            isFacingRight = !isFacingRight;
+
+            Vector3 ls = transform.localScale;
+
+            ls.x *= -1f;
+
+            transform.localScale = ls;
+
+        }
+
     }
 }
