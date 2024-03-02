@@ -779,7 +779,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -852,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 1539782691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.88, y: 0.572, z: 0}
+  m_LocalPosition: {x: -2.3, y: 1.26, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -871,8 +871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe29d4135fda3444a99bece58c8900a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 1539782692}
   speed: 5
+  jumpVelocity: 10
+  jumpCancelFactor: 0.5
 --- !u!114 &1539782696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +975,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 80ef9b40-5fa1-49a5-ae66-f2de07f6c6d0
     m_ActionName: Player2/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1539782695}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bc80c34d-6899-4a40-99e1-cc1788338125
+    m_ActionName: Player1/Jump
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16a2780c-0bf4-409a-9ad1-b2b402635c0d
+    m_ActionName: Player2/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1
@@ -1429,8 +1450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe29d4135fda3444a99bece58c8900a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 1978656930}
   speed: 5
+  jumpVelocity: 5
+  jumpCancelFactor: 0.5
 --- !u!114 &1978656929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1554,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 80ef9b40-5fa1-49a5-ae66-f2de07f6c6d0
     m_ActionName: Player2/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc80c34d-6899-4a40-99e1-cc1788338125
+    m_ActionName: Player1/Jump[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1978656928}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 16a2780c-0bf4-409a-9ad1-b2b402635c0d
+    m_ActionName: Player2/Jump[/Keyboard/upArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player2
