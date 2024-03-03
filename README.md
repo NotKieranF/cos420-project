@@ -13,12 +13,12 @@ Sections:
   Mostly a collective brainstorming effort to incept the idea of the game and get some preliminary stuff pushed.
 
   Deliverable 1:
-  Updates to documents uploaded in deliverable 0, a start to the project itself, addition of the spring backlog, addition of SRS document.
+  Updates to documents uploaded in deliverable 0, a start to the project itself, addition of the sprint backlog, addition of SRS document.
 
 
 Contributers:
 Mariia Maksymenko,
-Kieren Firkin,
+Kieran Firkin,
 Caleb Thurston,
 Arius Ahmad, &
 Liam Cringle
