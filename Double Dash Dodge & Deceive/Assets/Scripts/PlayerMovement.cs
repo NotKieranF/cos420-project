@@ -15,6 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpVelocity = 10f;
     [SerializeField] private float jumpCancelFactor = 0.5f;
+    public float wallSlideSpeed = 2;
+    bool isWallSliding;
+    bool isWallJumping;
+    float wallJumpDirection;
+    float wallJumpTime = 0.5f;
+    float wallJumpTimer;
+    public Vector2 wallJumpPower = new Vector2(5f, 10f);
 
     // Stores input for horizontal movement
     private float xAxisMovement;
@@ -22,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight = false;
     private bool isGrounded = false;
     private bool isJumping = false;
+
+    public Transform wallCheckPos;
+    public Vector2 wallCheckSize = new Vector2(0.49f, 0.03f);
+    public LayerMask wallLayer;
+
+    public float baseGravity = 2f;
+    public float maxFallSpeed = 18f;
+    public float fallGravityMult = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,15 +50,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Updates the velocity of the player and maintains the vertical velocity
-        m_RigidBody.velocity = new Vector2 (xAxisMovement * speed, m_RigidBody.velocity.y);
-
-        // Updates the animator component with the player's velocity
-        m_Animator.SetFloat("xVelocity", Math.Abs(m_RigidBody.velocity.x));
-        FlipAnimation();
+        
         
         // Check for groundedness
         CheckGround();
+
+        ProcessGravity();
+        ProcessWallSlide();
+        ProcessWallJump();
+
+        if (!isWallJumping)
+        {
+            // Updates the velocity of the player and maintains the vertical velocity
+            m_RigidBody.velocity = new Vector2(xAxisMovement * speed, m_RigidBody.velocity.y);
+            // Updates the animator component with the player's velocity
+            m_Animator.SetFloat("xVelocity", Math.Abs(m_RigidBody.velocity.x));
+            FlipAnimation();
+        }
     }
 
     // This method is called by an input action like WASD or arrow keys 
@@ -65,8 +88,61 @@ public class PlayerMovement : MonoBehaviour
             // Reduce upwards velocity if jump is released early
             m_RigidBody.velocity *= new Vector2(1.0f, jumpCancelFactor);
         }
+        
+        // Wall Jumping lasts 0.5 seconds, jump again after 0.6 seconds
+        if(context.performed && wallJumpTimer > 0f)
+        {
+            isWallJumping = true;
+            m_RigidBody.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
+            wallJumpTimer = 0;
+
+            if(transform.localScale.x != wallJumpDirection)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 ls = transform.localScale;
+                ls.x *= -1f;
+                transform.localScale = ls;
+            }
+
+            Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); 
+        }
+
+    }
+    private void ProcessWallSlide()
+    {
+        if (!isGrounded & WallCheck() & xAxisMovement != 0)
+        {
+            wallJumpDirection = -transform.localScale.x;
+            wallJumpTimer = wallJumpTime;
+
+            CancelInvoke(nameof(CancelWallJump));
+        }
+        else if (wallJumpTimer > 0f)
+        {
+
+            wallJumpTimer -= Time.deltaTime;
+        }
+    }
+    private void ProcessWallJump()
+    {
+        if (isWallSliding)
+        {
+            isWallJumping = false;
+            wallJumpDirection = -transform.localScale.x;
+            wallJumpTimer = wallJumpTime;
+
+            CancelInvoke(nameof(CancelWallJump));
+        }
+        else if (wallJumpTimer > 0f) {
+        
+            wallJumpTimer -= Time.deltaTime;
+        }
     }
 
+    private void CancelWallJump() {
+
+        isWallJumping = false;
+    }
     void CheckGround()
     {
         Vector2 min = new Vector2(m_Collider.bounds.min.x + 0.05f, m_Collider.bounds.min.y - 0.05f);
@@ -75,6 +151,27 @@ public class PlayerMovement : MonoBehaviour
         //Debug.DrawLine(min, max, Color.red);
     }
 
+    private void ProcessGravity()
+    {
+        if (m_RigidBody.velocity.y < 0)
+        {
+            m_RigidBody.gravityScale = baseGravity * fallGravityMult;
+            m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, Mathf.Max(m_RigidBody.velocity.y, -maxFallSpeed));
+        }
+        else
+        {
+            m_RigidBody.gravityScale = baseGravity;
+        }
+    }
+    private bool WallCheck()
+    {
+        return Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, wallLayer);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
+    }
     void FlipAnimation()
     {
         // If the character is moving right, flip them to the right, and vice versa
