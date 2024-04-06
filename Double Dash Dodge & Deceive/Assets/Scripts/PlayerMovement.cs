@@ -6,6 +6,10 @@ using UnityEngine.InputSystem; // This is the input system package for WASD move
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    //reference for menu
+    public GameObject MainMenu;
+
     // Internal component references
     private Rigidbody2D m_RigidBody;
     private Collider2D m_Collider;
@@ -22,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight = false;
     private bool isGrounded = false;
     private bool isJumping = false;
+
+    private bool menuPressed = true;
 
     // Start is called before the first frame update
     void Start()
@@ -90,4 +96,19 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+    public void Pause(){
+
+        MainMenu.SetActive(true);
+        Time.timeScale = 0;
+
+    }
+
+    public void Continue(){
+
+        MainMenu.SetActive(false);
+        Time.timeScale = 1;
+
+    }
+
 }
