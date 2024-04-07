@@ -46,10 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Updates the animator component with the player's velocity
         m_Animator.SetFloat("xVelocity", Math.Abs(m_RigidBody.velocity.x));
+        m_Animator.SetFloat("yVelocity", m_RigidBody.velocity.y);
         FlipAnimation();
         
         // Check for groundedness
         CheckGround();
+        
     }
 
     // This method is called by an input action like WASD or arrow keys 
@@ -61,16 +63,41 @@ public class PlayerMovement : MonoBehaviour
     
     public void Jump(InputAction.CallbackContext context)
     {
-        isJumping = context.ReadValue<float>() > 0;
+        if (context.started)
+        {
+            // Jump input started, check if grounded and jump
+            if (isGrounded)
+            {
+                isJumping = true;
+                m_RigidBody.velocity += Vector2.up * jumpVelocity;
+                m_Animator.SetBool("isJumping", isJumping);
+                //FlipAnimation();
+            }
+        }
+        else if (context.canceled)
+        {
+            // Jump input released, reduce upwards velocity if jump is released early
+            if (m_RigidBody.velocity.y > 0)
+            {
+                m_RigidBody.velocity *= new Vector2(1.0f, jumpCancelFactor);
+            }
+            isJumping = false;
+            m_Animator.SetBool("isJumping", isJumping);
+        }
+        /*isJumping = context.ReadValue<float>() > 0;
         if (isJumping && isGrounded)
         {
             m_RigidBody.velocity += Vector2.up * jumpVelocity;
+            // Animator transition conditions
+            m_Animator.SetBool("isJumping", isJumping); 
+            FlipAnimation();
         }
         else if (m_RigidBody.velocity.y > 0)
         {
             // Reduce upwards velocity if jump is released early
             m_RigidBody.velocity *= new Vector2(1.0f, jumpCancelFactor);
         }
+        */
     }
 
     void CheckGround()

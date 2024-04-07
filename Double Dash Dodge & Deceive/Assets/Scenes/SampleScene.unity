@@ -4074,7 +4074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 0}
   speed: 5
-  jumpVelocity: 15
+  jumpVelocity: 20
   jumpCancelFactor: 0.5
 --- !u!114 &1978656929
 MonoBehaviour:
