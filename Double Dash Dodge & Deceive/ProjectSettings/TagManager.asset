@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Divider
   - Ground
-  - 
+  - Wall
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Divider
     uniqueID: 2628108829
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2231199945
     locked: 0
