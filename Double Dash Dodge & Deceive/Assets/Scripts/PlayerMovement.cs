@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = false;
         }
-        //m_Animator.SetBool("isWallSliding", isWallSliding); - Uncomment when wall sliding animation exists
+        m_Animator.SetBool("isWallSliding", isWallSliding);
     }
 
     void CheckGround()
