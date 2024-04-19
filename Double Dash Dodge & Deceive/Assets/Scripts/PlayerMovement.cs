@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
         m_Collider = GetComponent<Collider2D>();
+
     }
 
     // Update is called once per frame
