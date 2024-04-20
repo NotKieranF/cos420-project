@@ -855,9 +855,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1788102143
-  m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingLayerID: 1140125719
+  m_SortingLayer: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2146268701, guid: 3d633ae54d75abf4e9e4111083200de6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1146,7 +1146,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 2.3, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1390,7 +1390,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1, y: 110}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119501224
 MonoBehaviour:
@@ -4041,7 +4041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8089,9 +8089,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1788102143
-  m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingLayerID: 1140125719
+  m_SortingLayer: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1154864509, guid: 3d633ae54d75abf4e9e4111083200de6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8112,7 +8112,7 @@ Transform:
   m_GameObject: {fileID: 1080475792}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.141, y: 24.880001, z: 0}
+  m_LocalPosition: {x: -2.141, y: 25.19, z: 0}
   m_LocalScale: {x: 0.513318, y: 5.68189, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
