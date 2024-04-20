@@ -49,3 +49,12 @@ TagManager:
   - name: New Layer 2
     uniqueID: 2231199945
     locked: 0
+  - name: Background
+    uniqueID: 1140125719
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2506865153
+    locked: 0
+  - name: Players
+    uniqueID: 158876281
+    locked: 0
