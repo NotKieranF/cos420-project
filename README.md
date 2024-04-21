@@ -1,33 +1,43 @@
-Project: ** Currently in Development **
-Double Dash Dodge & Deceive 
-by Code in the Shell
 
-Description: 
-This is a school project in which we practice software engineering processes to achieve some end goal created by us. We have chosen:
-A fast paced platformer game taking inspiration from things like Ultimate Chicken Horse and Nidhogg
-Currently only the environment and basic movement have been set up.
+# Double Dash Dodge & Deceive 
+By Code in the Shell
 
-How to use:
-Add "./Double Dash Dodge & Deceive" folder to Unity project registry.
-Open in Unity editor and click play.
-Control player one with WASD, and player two with arrow keys.
+## Description
+A class project written in the Unity game engine to practice software engineering processes. In particular, the project is a fast paced platformer taking inspiration from Ultimate Chicken Horse and Nidhogg.
 
-Sections:
-  ./Double Dash Dodge & Deceive
-  Unity project folder for the game.
+## How to build
+1. Add the `/Double Dash Dodge & Deceive/` directory to Unity project registry
+1. Open in Unity editor and click `File > Build And Run`
 
-  ./Deliverable0
-  Mostly a collective brainstorming effort to incept the idea of the game and get some preliminary stuff pushed.
+## How to play
+Player one controls with WASD, player two controls with arrow keys. Each player tries to progress from their side of the level to their opponents, dodging traps along the way. Once one player reaches their finish line, the game is over.
 
-  ./Deliverable1
-  Updates to documents uploaded in deliverable 0, a start to the project itself, addition of the sprint backlog, addition of SRS document.
+## Sections
+* `/Double Dash Dodge & Deceive/`
+Unity project folder for the game.
 
-  ./Deliverable2
-  Revised versions of deliverable 1 documents, use case model document, architecture design document.
+* `/Deliverable0/`
+Project description, product backlog, user story document.
 
-Contributers:
-Mariia Maksymenko,
-Kieran Firkin,
-Caleb Thurston,
-Arius Ahmad, &
-Liam Cringle
+* `/Deliverable1/`
+Sprint backlog, software requirements specification, sprint review, revised versions of previous documents.
+
+* `/Deliverable2/`
+Use case model document, architecture design document, revised versions of previous documents, sprint review.
+
+* `/Deliverable3/`
+Sequence diagram, domain model, revised versions of previous documents, sprint review.
+
+* `/Deliverable4/`
+Detailed design document, configuration management plan, revised versions of previous documents, sprint review.
+
+* `/Deliverable5/`
+Plan for future document, test plan document, revised versions of previous documents, sprint review.
+
+# Contributors
+- Mariia Maksymenko (mariia.maksymenko@maine.edu)
+- Kieran Firkin (kieran.firkin@maine.edu)
+- Caleb Thurston (caleb.thurston1@maine.edu)
+- Arius Ahmad (arius.ahmad@maine.edu)
+- Liam Cringle (liam.cringle@maine.edu)
+
