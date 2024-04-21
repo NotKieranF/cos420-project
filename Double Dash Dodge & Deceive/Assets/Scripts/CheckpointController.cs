@@ -1,6 +1,12 @@
+// Description: Checkpoint Controller to control where a players last checkpoint was
+// Language: C#
+
+//------------------------------------------Imports and Dependencies---------------------------------------------------//
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//-------------------------------------------Checkpoint Controller Class------------------------------------------------//
 
 public class CheckpointController : MonoBehaviour
 {

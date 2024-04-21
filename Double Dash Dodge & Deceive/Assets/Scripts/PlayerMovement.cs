@@ -1,12 +1,19 @@
+// Description: Code implementing our players movement including wall jumping and wall sliding
+// Language: C#
+
+
+//--------------------------------------------------Imports and Dependencies------------------------------------//
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; // This is the input system package for WASD movement
 
+
+//-----------------------------------------Player Movement Class-----------------------------//
 public class PlayerMovement : MonoBehaviour
 {
-
+//-------------------------------------------References to the Player/Outside Objects-------------------------//
     //reference for menu
     public GameObject MainMenu;
 
@@ -15,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Collider2D m_Collider;
     private Animator m_Animator;
     
+//-----------------------------------------------------Player Movement Variables----------------------------------------------//
     // Player movement parameters
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpVelocity = 10f;
@@ -26,20 +34,23 @@ public class PlayerMovement : MonoBehaviour
 
     // Stores input for horizontal movement
     private float xAxisMovement;
+    //Variable for the wall
+    private Vector2 wallNormal;
     
     // Most recently touched checkpoint
     public CheckpointController currentCheckpoint;
 
+//------------------------------Bools to be checked in code-----------------------//
     private bool isFacingRight = false;
     private bool isGrounded = false;
     private bool isJumping = false;
     private bool isTouchingWall = false;
     private bool isWallSliding = false;
     private bool menuPressed = true;
-    private Vector2 wallNormal;
+    
 
 
-    // Start is called before the first frame update
+//----------------------------------------------------Start method/Getting Components from Player-------------------------------//
     void Start()
     {
         // Get references to internal components
@@ -49,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+//---------------------------Update Method/Updating Velocity, checking if touching the wall, etc..--------------------------//
     void Update()
     {
         // Check for groundedness
@@ -71,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
     
-    // 
+//---------------------------------------------Die Method to respawn Player------------------------------------//
     public void Die()
     {
         // Respawn at origin if we have no associated checkpoint
@@ -84,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
         transform.position = currentCheckpoint.transform.position;
     }
 
+//----------------------------------------Main Logic behind movement, taking input from the keyboard----------------------------------//
+
     // This method is called by an input action like WASD or arrow keys 
     public void Move(InputAction.CallbackContext context)
     {
@@ -91,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         xAxisMovement = context.ReadValue<Vector2>().x;
     }
     
+//-----------------------------------Jump Method-----------------------------------------//
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -119,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+//--------------------------------------Wall Jumping Methods-------------------------------//
     void WallJump()
     {
         Vector2 jumpDirection = wallNormal + Vector2.up;
@@ -137,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
                 wallNormal = hit.normal;
         }
     }
+
+//------------------------------------Wall Sliding Methods-------------------------------------//
     void WallSlide()
     {
         if (isTouchingWall && !isGrounded && m_RigidBody.velocity.y < 0)
@@ -159,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.DrawLine(min, max, Color.red);
     }
 
+//-------------------------------Method to flip the animation of the player--------------------------//
     void FlipAnimation()
     {
         // If the character is moving right, flip them to the right, and vice versa
@@ -175,6 +193,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+//---------------------------------------------Methods implementing the Pause Menu-----------------------------------//
     public void Pause(){
 
         MainMenu.SetActive(true);
