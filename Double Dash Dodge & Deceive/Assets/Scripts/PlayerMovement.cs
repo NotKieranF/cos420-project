@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     // Stores input for horizontal movement
     private float xAxisMovement;
+    
+    // Most recently touched checkpoint
+    public CheckpointController currentCheckpoint;
 
     private bool isFacingRight = false;
     private bool isGrounded = false;
@@ -66,6 +69,19 @@ public class PlayerMovement : MonoBehaviour
 
         WallSlide();
         
+    }
+    
+    // 
+    public void Die()
+    {
+        // Respawn at origin if we have no associated checkpoint
+        if (currentCheckpoint == null)
+        {
+            transform.position = Vector3.zero;
+        }
+        
+        // Otherwise respawn at location of current checkpoint
+        transform.position = currentCheckpoint.transform.position;
     }
 
     // This method is called by an input action like WASD or arrow keys 
