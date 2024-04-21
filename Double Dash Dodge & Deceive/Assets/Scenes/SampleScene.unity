@@ -1907,7 +1907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.9206085, y: 0}
+  m_AnchoredPosition: {x: 1.9205933, y: 0}
   m_SizeDelta: {x: -3.8513, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125889953
@@ -11619,7 +11619,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'Welcome to Double Dash Dodge & Deceive!
+
+
+    How to Play!
+
+
+    The goal
+    of the game is to reach the other side of the map before the other players, it''s
+    a race to the finish!
+
+
+    As you''re racing you''ll have to dodge obstacles,
+    traverse traps, and sabotage the other player by triggering traps!
+
+
+    The
+    Red player (left) uses WASD to move
+
+
+    The Green player (right) uses the arrow
+    keys to move!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11646,8 +11666,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11682,7 +11702,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 69.741455}
+  m_margin: {x: 0, y: -31.393555, z: 0, w: 69.741455}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -22155,7 +22175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.9206848, y: 0}
+  m_AnchoredPosition: {x: -1.9206543, y: 0}
   m_SizeDelta: {x: -3.8514, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1881323855
